@@ -1,45 +1,51 @@
-import React from 'react';
-import { X } from 'lucide-react';
+import React from "react";
 
-interface CtaModalProps {
+type Props = {
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
-export const CtaModal: React.FC<CtaModalProps> = ({ isOpen, onClose }) => {
+const CtaModal: React.FC<Props> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-stone-900/80 backdrop-blur-sm animate-fade-in"
-        onClick={onClose}
-      />
-      
-      {/* Modal Content */}
-      <div className="relative w-full max-w-2xl h-[85vh] bg-white rounded-xl overflow-hidden shadow-2xl animate-fade-in z-[110] flex flex-col">
-        {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b border-stone-100 bg-white">
-          <h3 className="font-serif text-lg font-medium text-stone-900">Connect with AMVS</h3>
-          <button 
-            onClick={onClose}
-            className="p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
+    <div style={{
+      position:"fixed",
+      inset:0,
+      background:"rgba(0,0,0,0.85)",
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      zIndex:9999
+    }}>
+      <div style={{
+        width:"90%",
+        maxWidth:"700px",
+        height:"80vh",
+        background:"white",
+        position:"relative"
+      }}>
+        <button 
+          onClick={onClose}
+          style={{
+            position:"absolute",
+            right:"12px",
+            top:"8px",
+            fontSize:"20px",
+            border:"none",
+            background:"none",
+            cursor:"pointer"
+          }}>
+          ✕
+        </button>
 
-        {/* Iframe Container */}
-        <div className="flex-1 w-full bg-white relative overflow-hidden">
-             <iframe 
-                src="https://api.leadconnectorhq.com/widget/form/DMKJtaqaFuUJrrDpU4N6" 
-                className="w-full h-full border-0 absolute inset-0"
-                title="Lead Form"
-                allow="camera; microphone; autoplay; encrypted-media;"
-            />
-        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/DMKJtaqaFuUJrrDpU4N6"
+          style={{width:"100%",height:"100%",border:"none"}}
+        />
       </div>
     </div>
   );
 };
+
+export default CtaModal;
