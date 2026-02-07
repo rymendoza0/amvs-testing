@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, CheckCircle2, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
-import { Logo } from './components/Logo';
-import { Button } from './components/Button';
-import { PropertyCard } from './components/PropertyCard';
-import { ChatWidget } from './components/ChatWidget';
-import { CtaModal } from './components/CtaModal';
+import Logo from './components/Logo';
+import Button from './components/Button';
+import PropertyCard from './components/PropertyCard';
+import ChatWidget from './components/ChatWidget';
+import CtaModal from './components/CtaModal';
 import { Property, SectionId } from './types';
 
 // --- Constants & Mock Data ---
